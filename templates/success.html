@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Wall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p class="alert alert-success">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <h1>Success page!</h1>
+    <a href="/logout"><button class="btn btn-warning">Logout</button></a>
+    <table class="table table-striped">
+        <thead>
+            <th>Email</th>
+            <th>Date created</th>
+
+        </thead>
+        <tbody>
+            {% for email in emails %}
+            <tr>
+                <td>{{email['email']}}</td>
+                <td>{{email['created_at']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
